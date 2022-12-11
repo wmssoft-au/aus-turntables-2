@@ -1,0 +1,23 @@
+<odoo>
+  <data>
+        <record id="mrp_routing_workcenter_form_view_inherit" model="ir.ui.view">
+          <field name="name">mrp.routing.workcenter.inherit</field>
+          <field name="model">mrp.routing.workcenter</field>
+          <field name="inherit_id" ref="mrp.mrp_routing_workcenter_form_view" />
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='company_id']" position="after">
+                <field name="is_outsource_operation" />
+                <field name="partner_id" attrs="{'invisible': [('is_outsource_operation', '=', False)]}" />
+                <field name="estimated_cost" attrs="{'invisible': [('is_outsource_operation', '=', False)]}" />
+                <label for="lead_time"/>
+                <div>
+                  <field name="lead_time" attrs="{'invisible': [('is_outsource_operation', '=', False)]}" class="oe_inline" />
+                  <field name="outsource_uom_id" attrs="{'invisible': [('is_outsource_operation', '=', False)]}" readonly="1" class="oe_inline" />
+                </div>
+              </xpath>
+          </field>
+        </record>
+      
+      
+  </data>
+</odoo>
